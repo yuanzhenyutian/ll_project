@@ -1,0 +1,9 @@
+"https://{default}/":
+  type: upstream
+  upstream: "1l_project:http"
+
+"https://www.{default}/":
+  type: redirect
+  to: "https://{default}/"
+ 
+
