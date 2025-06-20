@@ -3,3 +3,4 @@ Django==5.2.3
 django-bootstrap5==25.1
 platformshconfig==2.4.0
 sqlparse==0.5.3
+psycopg2-binary>=2.9
