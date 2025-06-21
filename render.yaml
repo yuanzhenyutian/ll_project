@@ -1,13 +1,12 @@
-# render.yaml
 services:
   - type: web
     name: ll-project
-    env: python
     plan: free
+    env: python
+    pythonVersion: 3.10
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn ll_project.wsgi:application
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: ll_project.settings
-      - key: PYTHON_VERSION
-        value: 3.10
+    startCommand: gunicorn ll_project.wsgi:application --bind 0.0.0.0:$PORT
+    env:
+      DJANGO_SETTINGS_MODULE: ll_project.settings
+      # 你可以在这里添加其他环境变量，例如数据库连接字符串
+      # DATABASE_URL: postgres://user:password@host:port/dbname
