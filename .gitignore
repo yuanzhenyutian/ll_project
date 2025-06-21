@@ -1,3 +1,5 @@
-ll_env/
-_pycache_/
 *.sqlite3
+__pycache__/
+staticfiles/
+.env
+

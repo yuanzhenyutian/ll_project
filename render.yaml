@@ -4,11 +4,16 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn ll_project.wsgi:application
+    startCommand: gunicorn ll_project.wsgi --bind 0.0.0.0:10000
     envVars:
-      - key: DEBUG
-        value: False
       - key: SECRET_KEY
-        generateValue: true
+        value: "your-secret-key"
+      - key: DEBUG
+        value: "False"
       - key: ALLOWED_HOSTS
-        value: ll-project.onrender.com
+        value: "your-app-name.onrender.com"
+      - key: DATABASE_URL
+        # 如果你用 PostgreSQL，Render 会自动注入此变量，你可以也手动加上备用
+        fromDatabase:
+          name: your-db-name
+          property: connectionString
