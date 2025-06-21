@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ll-project
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn ll_project.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: ll_project.settings
+      - key: PYTHON_VERSION
+        value: 3.10
